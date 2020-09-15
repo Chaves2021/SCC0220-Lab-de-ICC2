@@ -1,13 +1,17 @@
 CC=gcc
 BINARY=./bin/ex
-SRC= ./src/ex.c
+SRC= ./src/main.c ./src/file_manager.c
+INCLUDES= ./includes/
 OPTIONS=-Wall -g -Werror
 TEST=teste.in
+FILENAME=./casos/data/numberlist10.dat
 
 all:
-	@$(CC) $(SRC) -o $(BINARY) $(OPTIONS)
+	@$(CC) $(SRC) -o $(BINARY) -I$(INCLUDES) $(OPTIONS)
 run:
-	@$(BINARY)
+	@$(BINARY) $(FILENAME)
+debug:
+	@$(CC) $(SRC) -o $(BINARY) -I$(INCLUDES) $(OPTIONS) -DDEBUG
 test:
 	@$(BINARY) < $(TEST)
 valgrind:
