@@ -1,6 +1,6 @@
 CC=gcc
 BINARY=./bin/ex
-SRC= ./src/main.c ./src/file_manager.c
+SRC= ./src/main.c ./src/file_manager.c ./src/watch.c
 INCLUDES= ./includes/
 OPTIONS=-Wall -g -Werror
 TEST=teste.in
