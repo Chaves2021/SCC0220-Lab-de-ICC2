@@ -1,7 +1,7 @@
+#include <defines.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <file_manager.h>
-#include <defines.h>
 
 long int get_file_size(char *file_name)
 {
@@ -30,5 +30,23 @@ int *bin2array(char *file_name, long int *array_size)
 
 	while(!feof(fpointer)) fread(&(array[aux++]), 1, sizeof(int), fpointer);
 	
+	fclose(fpointer);
 	return array;
+}
+
+int saveTimeToFile(int array_size, double time, PROGRAM program)
+{
+	FILE *fpointer;
+
+	if(program == REVERSE_ARRAY)
+		fpointer = fopen("reversetime.dat", "a+b");
+	else
+		fpointer = fopen("bubbletime.dat", "a+b");
+
+	if(!fpointer) return ERROR;
+
+	fwrite(&time, sizeof(double), 1, fpointer);
+	fclose(fpointer);
+
+	return SUCCESS;
 }
