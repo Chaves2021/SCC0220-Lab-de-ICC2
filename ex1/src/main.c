@@ -49,7 +49,6 @@ int main(int argc, char **argv)
 		}
 		else if(option == 2) 
 		{
-			array = bin2array(file_name, &array_size);
 			program = BUBBLE_SORT;
 			bubble_sort(array, array_size);
 		}
