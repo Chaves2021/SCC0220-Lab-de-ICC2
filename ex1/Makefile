@@ -1,10 +1,10 @@
 CC=gcc
 BINARY=./bin/ex
-SRC= ./src/main.c ./src/file_manager.c ./src/watch.c
+SRC= ./src/main.c ./src/file_manager.c ./src/watch.c ./src/array.c
 INCLUDES= ./includes/
-OPTIONS=-Wall -g -Werror
+OPTIONS=-Wall -g #-Werror
 TEST=teste.in
-FILENAME=./casos/data/numberlist10.dat
+FILENAME=./casos/data/numberlist5000.dat
 
 all:
 	@$(CC) $(SRC) -o $(BINARY) -I$(INCLUDES) $(OPTIONS)
