@@ -4,6 +4,7 @@
 #include <file_manager.h>
 #include <time.h>
 #include <watch.h>
+#include <array.h>
 
 int display_menu()
 {
@@ -35,17 +36,20 @@ int main(int argc, char **argv)
 	file_name = argv[1];
 	array = bin2array(file_name, &array_size);
 	if(!array) return ERROR;
+	
+	int option = display_menu();
 
 	for(i = 0; i < 1000; i++)
 	{
 		start_time = clock();
-		if(display_menu() == 1) 
+		if(option == 1) 
 		{
 			program = REVERSE_ARRAY;
 			reverse_array(array, array_size); 
 		}
-		else if(display_menu() == 2) 
+		else if(option == 2) 
 		{
+			array = bin2array(file_name, &array_size);
 			program = BUBBLE_SORT;
 			bubble_sort(array, array_size);
 		}
@@ -55,10 +59,8 @@ int main(int argc, char **argv)
 			exit(1);
 		}
 		end_time = clock();
-		#ifdef DEBUG
-			printf("The final array is: \n");
-			int j;
-			for(j = 0; j < array_size; j++) printf("%d\n", array[i]);
+		#ifndef DEBUG
+			averageTime += getExecutionTime(start_time, end_time);
 		#else
 			averageTime += getExecutionTime(start_time, end_time);
 		#endif
@@ -67,7 +69,17 @@ int main(int argc, char **argv)
 	#ifndef DEBUG
 		averageTime = averageTime / (double) 1000.00;
 		saveTimeToFile(array_size, averageTime, program);
+	#else
+			array = bin2array(file_name, &array_size);
+			printf("The initial array is: \n");
+			print_array(array, array_size);
+			printf("The final array is: \n");
+			if(option == 1) array = reverse_array(array, array_size); 
+			else array = bubble_sort(array, array_size);
+			print_array(array, array_size);
+			printf("average time: %lf\n", averageTime);
 	#endif
+	
 	
 	free(array);
 
