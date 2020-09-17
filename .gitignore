@@ -9,6 +9,7 @@ Notes/
 *.pdf
 *.bin
 *.in
+*.dat
 
 #Não adicionar arquivos compactados
 *.zip
