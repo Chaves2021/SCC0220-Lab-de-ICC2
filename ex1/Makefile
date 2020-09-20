@@ -4,7 +4,7 @@ SRC= ./src/main.c ./src/file_manager.c ./src/watch.c ./src/array.c
 INCLUDES= ./includes/
 OPTIONS=-Wall -g #-Werror
 TEST=teste.in
-FILENAME=./casos/data/numberlist5000.dat
+FILENAME=./casos/data/numberlist10000.dat
 
 all:
 	@$(CC) $(SRC) -o $(BINARY) -I$(INCLUDES) $(OPTIONS)
@@ -14,6 +14,8 @@ debug:
 	@$(CC) $(SRC) -o $(BINARY) -I$(INCLUDES) $(OPTIONS) -DDEBUG
 test:
 	@$(BINARY) < $(TEST)
+plot:
+	gnuplot "plotdata" -p
 valgrind:
 	@$(CC) $(OPTIONS) $(SRC) -o $(BINARY)
 	@valgrind --leak-check=yes $(BINARY)
