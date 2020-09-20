@@ -23,7 +23,6 @@ int main(int argc, char **argv)
 {
 	double averageTime;
 	clock_t start_time, end_time;
-	long int array_size;
 	int *array = NULL;
 	char *file_name;
 	int i;
@@ -34,9 +33,8 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	file_name = argv[1];
-	array = bin2array(file_name, &array_size);
-	int n_executions = get_executions(file_name);
-	printf("%d\n", n_executions);
+	int array_size = get_array_size(file_name);
+	array = bin2array(file_name, array_size);
 	if(!array) return ERROR;
 	
 	int option = display_menu();
@@ -53,7 +51,7 @@ int main(int argc, char **argv)
 		{
 			program = BUBBLE_SORT;
 			bubble_sort(array, array_size);
-			array = bin2array(file_name, &array_size);
+			array = bin2array(file_name, array_size);
 		}
 		else
 		{
@@ -69,10 +67,10 @@ int main(int argc, char **argv)
 	}
 
 	#ifndef DEBUG
-		averageTime = averageTime / (double) n_executions;
+		averageTime = averageTime / (double) 1000.00;
 		saveTimeToFile(array_size, averageTime, program);
 	#else
-			array = bin2array(file_name, &array_size);
+			array = bin2array(file_name, array_size);
 			printf("The initial array is: \n");
 			print_array(array, array_size);
 			printf("The final array is: \n");
