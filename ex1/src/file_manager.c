@@ -15,7 +15,7 @@ long int get_file_size(char *file_name)
 	return file_size;
 }
 
-int *bin2array(char *file_name, long int *array_size)
+int *bin2array(char *file_name, int array_size)
 {
 	FILE *fpointer = fopen(file_name, "rb");
 	if(!fpointer) 
@@ -24,8 +24,7 @@ int *bin2array(char *file_name, long int *array_size)
 		return NULL;
 	}
 
-	*array_size = get_file_size(file_name) / sizeof(int);
-	int *array = (int *) malloc((*array_size) * sizeof(int));
+	int *array = (int *) malloc(array_size * sizeof(int));
 	int aux = 0;
 
 	while(!feof(fpointer)) fread(&(array[aux++]), 1, sizeof(int), fpointer);
@@ -45,21 +44,20 @@ int saveTimeToFile(int array_size, double time, PROGRAM program)
 
 	if(!fpointer) return ERROR;
 
-	fwrite(&array_size, sizeof(int), 1, fpointer);
-	fwrite(&time, sizeof(double), 1, fpointer);
+	fprintf(fpointer, "%d %lf\n", array_size, time);
 	fclose(fpointer);
 
 	return SUCCESS;
 }
 
-int get_executions(char *file_name)
+int get_array_size(char *file_name)
 {
 	int n_executions;
-	int counter = 1;
+	int counter = 0;
 	char *aux = (char *) calloc(7, sizeof(char));
-	aux[0] = file_name[10];
-	while(aux[counter] != '.' && aux[counter] != '\0' && counter++);
-	aux[counter] = '\0';
+	aux[0] = file_name[23];
+	//while(aux[counter] != '.' && aux[counter] != '\0' && counter++) aux[counter] = file_name[counter + 23];
+	while(aux[counter] != '.' && ++counter) aux[counter] = file_name[counter + 23];
 	n_executions = atoi(aux);
 	return n_executions;
 }
