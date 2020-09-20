@@ -45,8 +45,21 @@ int saveTimeToFile(int array_size, double time, PROGRAM program)
 
 	if(!fpointer) return ERROR;
 
+	fwrite(&array_size, sizeof(int), 1, fpointer);
 	fwrite(&time, sizeof(double), 1, fpointer);
 	fclose(fpointer);
 
 	return SUCCESS;
+}
+
+int get_executions(char *file_name)
+{
+	int n_executions;
+	int counter = 1;
+	char *aux = (char *) calloc(7, sizeof(char));
+	aux[0] = file_name[10];
+	while(aux[counter] != '.' && aux[counter] != '\0' && counter++);
+	aux[counter] = '\0';
+	n_executions = atoi(aux);
+	return n_executions;
 }
