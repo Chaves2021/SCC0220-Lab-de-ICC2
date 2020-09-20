@@ -35,6 +35,8 @@ int main(int argc, char **argv)
 	}
 	file_name = argv[1];
 	array = bin2array(file_name, &array_size);
+	int n_executions = get_executions(file_name);
+	printf("%d\n", n_executions);
 	if(!array) return ERROR;
 	
 	int option = display_menu();
@@ -51,6 +53,7 @@ int main(int argc, char **argv)
 		{
 			program = BUBBLE_SORT;
 			bubble_sort(array, array_size);
+			array = bin2array(file_name, &array_size);
 		}
 		else
 		{
@@ -66,7 +69,7 @@ int main(int argc, char **argv)
 	}
 
 	#ifndef DEBUG
-		averageTime = averageTime / (double) 1000.00;
+		averageTime = averageTime / (double) n_executions;
 		saveTimeToFile(array_size, averageTime, program);
 	#else
 			array = bin2array(file_name, &array_size);
