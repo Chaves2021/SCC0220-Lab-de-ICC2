@@ -23,7 +23,7 @@ fsanitize:
 	@$(CC) $(OPTIONS) $(SRC) -fsanitize=address -o $(BINARY)
 	@$(BINARY) < $(TEST)
 zip:
-	@zip -r trab.zip $(SRC) Makefile
+	@zip -r trab.zip $(SRC) $(INCLUDES) ./bin/ Makefile *.dat *.pdf plotdata
 clean:
 	@rm trab.zip
 	@rm $(BINARY)
