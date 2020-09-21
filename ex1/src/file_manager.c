@@ -15,6 +15,7 @@ long int get_file_size(char *file_name)
 	return file_size;
 }
 
+//Function to return an array from a .dat file
 int *bin2array(char *file_name, int array_size)
 {
 	FILE *fpointer = fopen(file_name, "rb");
@@ -50,6 +51,9 @@ int saveTimeToFile(int array_size, double time, PROGRAM program)
 	return SUCCESS;
 }
 
+//All files have the same beginning (./casos/data/numberlist...)
+//So, after the 23rd char, the file say how many numbers there is in.
+//So, I read it until a . that indicates the end of the number
 int get_array_size(char *file_name)
 {
 	int n_executions;
