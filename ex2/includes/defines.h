@@ -1,8 +1,3 @@
 #define SUCCESS		 0
-#define ERROR		-1
+#define NOT_FOUND	-1
 
-typedef enum
-{
-	REVERSE_ARRAY,
-	BUBBLE_SORT
-} PROGRAM;
