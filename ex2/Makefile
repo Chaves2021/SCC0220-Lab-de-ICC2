@@ -2,7 +2,7 @@ CC=gcc
 BINARY=./bin/ex
 SRC= ./src/main.c ./src/searches.c
 INCLUDES= ./includes/
-OPTIONS=-Wall -g -lm#-Werror
+OPTIONS=-Wall -g -lm -Werror
 TEST=casos/1.in
 
 all:

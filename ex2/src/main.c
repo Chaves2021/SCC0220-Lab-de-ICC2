@@ -6,8 +6,8 @@
 int main(void)
 {
 	int array_size, n_searches;
-	SEARCH_ELEM **search_elem;
-	int *array;
+	SEARCH_ELEM **search_elem = NULL;
+	int *array = NULL;
 	int i;
 
 	scanf("%d %d", &array_size, &n_searches);
