@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 #include "PokeDex.h"
-#include "Pokemon.h"
-#include "Util.h"
+#include "pokemon.h"
+#include "util.h"
 
 pokemon_t** readPkDex(int *nEntries) {
 

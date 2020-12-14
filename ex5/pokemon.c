@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "Pokemon.h"
+#include "pokemon.h"
 
 
 pokemon_t* createPokemon(int dexNumber, char* name, int hp, int atk, int def, int spatk, int spdef, int speed, type_t mainType, type_t subType)

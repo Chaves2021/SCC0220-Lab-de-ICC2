@@ -47,12 +47,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "Util.h"
-#include "PokeType.h"
-#include "Pokemon.h"
-#include "PokeBox.h"
+#include "util.h"
+#include "poketype.h"
+#include "pokemon.h"
+#include "pokebox.h"
 #include "PokeDex.h"
-#include "SaveManager.h"
+#include "savemanager.h"
 #include "Moves.h"
 
 int main()
@@ -94,6 +94,67 @@ int main()
             box[i] = NULL;
         }
     #endif
+
+	typedef enum
+	{
+		END = 0,
+		MOVE_RIGHT = 1,
+		MOVE_LEFT = -1,
+		ADD_BOX = 2,
+		REMOVE_BOX = -2,
+		ADD_POKEMON = 4,
+		ADD_POKEMON_AT_0 = 3,
+		REMOVE_POKEMON = -4,
+		PRINT_BOX = 5
+
+	}OPERATION;
+
+	OPERATION op;
+	int pos, dex;
+	scanf("%d", &op);
+
+	DOUBLE_LIST_HEADER *box_header = header_create();
+	do
+	{
+		switch(op)
+		{
+			case MOVE_RIGHT:
+				move_box(box_header, MOVE_RIGHT);
+				break;
+			case MOVE_LEFT:
+				move_box(box_header, MOVE_LEFT);
+				break;
+			case ADD_BOX:
+				list_elem_create(box_header);
+				//printf("ended\n");
+				break;
+			case REMOVE_BOX:
+				list_elem_remove(box_header);
+				//printf("ended\n");
+				break;
+			case ADD_POKEMON:
+				scanf("%d %d", &dex, &pos);
+				pokemon_add(box_header, pkdex, dex/* - 1*/, pos);
+				break;
+			case ADD_POKEMON_AT_0:
+				scanf("%d", &dex);
+				pokemon_add(box_header, pkdex, dex/* - 1*/, 0);
+				break;
+			case REMOVE_POKEMON:
+				scanf("%d", &pos);
+				pokemon_remove(box_header, pos);
+				break;
+			case PRINT_BOX:
+				printBox(box_header);
+				break;
+			default:
+				printf("Invalid Option :(\n");
+				break;
+
+
+		}
+		scanf("%d", &op);
+	}while(op != END);
 
     for(int i = 0; i < totalPkmn; ++i)
     {

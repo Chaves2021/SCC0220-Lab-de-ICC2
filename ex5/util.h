@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-#include "Pokemon.h"
+#include "pokemon.h"
 #ifdef __linux__
     #define DIRECTORY_NAME "data/"
     #define SPRITE_DIRECTORY "sprites/"

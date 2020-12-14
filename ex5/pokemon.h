@@ -7,9 +7,9 @@
 
 typedef struct _pokemon_t pokemon_t;
 
-#include "PokeType.h"
+#include "poketype.h"
 #include "Moves.h"
-#include "SaveManager.h"
+#include "savemanager.h"
 #include "SpriteManager.h"
 
 struct _pokemon_t{

@@ -1,4 +1,4 @@
-#include "PokeType.h"
+#include "poketype.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

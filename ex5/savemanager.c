@@ -1,6 +1,6 @@
-#include "SaveManager.h"
-#include "Util.h"
-#include "Pokemon.h"
+#include "savemanager.h"
+#include "util.h"
+#include "pokemon.h"
 
 #include<stdio.h>
 #include<stdlib.h>

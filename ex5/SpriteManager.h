@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
-#include "Util.h"
+#include "util.h"
 
 #define DEXNUMBERDIGITS 3
 

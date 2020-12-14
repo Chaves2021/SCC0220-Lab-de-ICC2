@@ -1,7 +1,7 @@
 #ifndef _PKDEX_H
 #define _PKDEX_H
 
-#include "Pokemon.h"
+#include "pokemon.h"
 
 pokemon_t** readPkDex();
 
